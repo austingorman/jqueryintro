@@ -41,18 +41,33 @@ $("<div>")
 // Creating a Business Card
 // When the user clicks a button, it should create a new business card
 
+
 // First, target the button and add an event listener to it. The callback function should create a card with an h4 element for the person's name and two paragraph elements for the person's position and company.
 // How would we do this with vanilla js?
 $("#create-card").click(() => {
   const $newCard = $("<div>").addClass("card");
   $("<h4>").addClass("name").attr("id", "name-heading").appendTo($newCard);
-  $newCard.appendTo($("#card-container"))
+  $("<p>").addClass("position").attr("id", "position-thing").appendTo($newCard);
+  $("<p>").addClass("company").attr("id", "company-thing").appendTo($newCard);
+  $newCard.appendTo($("#card-container"));
+})
+
+$("#delete-card").click(() => {
+  $(".card:last-child").remove()
 })
 
 // Next, target the inputs and add event listeners so that when the inputs change, the text on the card changes
 $("#name-input").keydown(() => {
-  const textValue = $("#name-input").val()
-  $("#name-heading").text(textValue);
+  const $textValue = $("#name-input").val()
+  $("#name-heading").text($textValue);
+})
+$("#position-input").keydown(() => {
+  const $textValue = $("#position-input").val()
+  $("#position-thing").text($textValue);
+})
+$("#company-input").keydown(() => {
+  const $textValue = $("#company-input").val()
+  $("#company-thing").text($textValue);
 })
 
 // What if we wanted to put an event listener on something that we added dynamically with javascript?
